@@ -24,7 +24,7 @@ Area = 1;       %Frontal Area(m^2)
 %% Optimal Slip Estimator
 
 %Sample time
-OSE_Ts = 0.01;
+OSE_Ts = 0.1;
 
 % estimator gains
 reduction = 0.9;
@@ -32,7 +32,7 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.001;
+TFO_Ts = 0.1;
 
 % observer matrices
 
