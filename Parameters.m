@@ -27,7 +27,7 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.1;
+TFO_Ts = 0.01;
 
 % observer matrices
 
