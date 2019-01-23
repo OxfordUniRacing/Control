@@ -7,7 +7,6 @@ clc
 % Car
 Mass = 200;     %mass of car (kg)
 
-
 %wheels
 R=1;            %wheel radius (m)
 Jw = 1;         %wheel inertia (kg.m^2)
@@ -16,10 +15,6 @@ Jw = 1;         %wheel inertia (kg.m^2)
 rho = 1.22;     %density of air (kg/m^3)
 Cd = 0.5;       % coefficient of drag
 Area = 1;       %Frontal Area(m^2)
-
-
-
-
 
 %% Optimal Slip Estimator
 
