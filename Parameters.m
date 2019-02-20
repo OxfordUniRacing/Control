@@ -12,7 +12,7 @@ cd(MainFolder);
 Mass = car_mass + driver_mass;     %mass of car (kg)
 
 %wheels
-R=tyre_radius;            %wheel radius (m)
+r = tyre_radius;            %wheel radius (m)
 Jw = tyre_inertia;         %wheel inertia (kg.m^2)
 
 %Aerodynamics
@@ -23,7 +23,7 @@ Area = frontal_area;       %Frontal Area(m^2)
 %% Optimal Slip Estimator
 
 %Sample time
-OSE_Ts = 0.1;
+OSE_Ts = 0.001;
 
 % estimator gains
 reduction = 0.9;
@@ -31,13 +31,13 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.01;
+TFO_Ts = 0.0001;
 
 
 % observer matrices SISO
 
 A_s = [0 -1/Jw; 0 0];
-B_s = [R/Jw; 0];
+B_s = [r/Jw; 0];
 C_s = [1 0];
 
 % observer gains SISO
@@ -64,7 +64,15 @@ K = [K_s zeros(2,1); zeros(2,1) K_s];
 %% Slip Ratio Controller
 
 %Sample time
-SRC_Ts = 0.1;
+SRC_Ts = 0.001;
+
+% LQR matrices
+
+Q = [1 0; 0 1];
+R = [1 0; 0 1];
+
+mat1 = [ 1 2; 3 4];
+mat2 = [ 5 6; 7 8];
 
 %% C code settings
 
