@@ -42,8 +42,8 @@ C_s = [1 0];
 
 % observer gains SISO
 
-l1 = 5;
-l2 = 10;
+l1 = 50;
+l2 = 100;
 
 K_s = [l1; -l2];
 
@@ -54,10 +54,6 @@ B = [B_s zeros(2,1); zeros(2,1) B_s];
 C = [C_s zeros(1,2); zeros(1,2) C_s];
 
 % observer gains MIMO
-
-l1 = 5;
-l2 = 10;
-
 K = [K_s zeros(2,1); zeros(2,1) K_s];
 
 
