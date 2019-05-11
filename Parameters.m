@@ -23,7 +23,7 @@ Area = frontal_area;       %Frontal Area(m^2)
 %% Optimal Slip Estimator
 
 %Sample time
-OSE_Ts = 0.001;
+OSE_Ts = 0.01;
 
 % estimator gains
 reduction = 0.9;
@@ -31,7 +31,7 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.0001;
+TFO_Ts = 0.01;
 
 
 % observer matrices SISO
@@ -43,7 +43,7 @@ C_s = [1 0];
 % observer gains SISO
 
 l1 = 50;
-l2 = 100;
+l2 = 50;
 
 K_s = [l1; -l2];
 
@@ -60,11 +60,11 @@ K = [K_s zeros(2,1); zeros(2,1) K_s];
 %% Slip Ratio Controller
 
 %Sample time
-SRC_Ts = 0.001;
+SRC_Ts = 0.01;
 
 % LQR matrices
 
-Q = [1 0; 0 1];
+Q = [1 0 0 0; 0 1 0 0; 0 0 0.2 0; 0 0 0 0.2];
 R = [1 0; 0 1];
 
 mat1 = [ 1 2; 3 4];
@@ -79,5 +79,5 @@ set_param('Tire_Force_Observer','TargetLangStandard','C99 (ISO)');
 set_param('Control_System','TargetLangStandard','C99 (ISO)');
 set_param('Control_System_Testbench','TargetLangStandard','C99 (ISO)');
 catch
-    disp('Models not loaded yet, compile simulink');
+    warning('Models not loaded yet, compile simulink and run again');
 end
