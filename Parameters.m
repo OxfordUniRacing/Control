@@ -79,5 +79,5 @@ set_param('Tire_Force_Observer','TargetLangStandard','C99 (ISO)');
 set_param('Control_System','TargetLangStandard','C99 (ISO)');
 set_param('Control_System_Testbench','TargetLangStandard','C99 (ISO)');
 catch
-    warning('Models not loaded yet, compile simulink and run again');
+    warning('Models not loaded yet, compile simulink and run again to set c code generation settings');
 end
