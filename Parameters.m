@@ -23,7 +23,7 @@ Area = frontal_area;       %Frontal Area(m^2)
 %% Optimal Slip Estimator
 
 %Sample time
-OSE_Ts = 0.01;
+OSE_Ts = 0.001;
 
 % estimator gains
 reduction = 0.9;
@@ -31,7 +31,7 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.01;
+TFO_Ts = 0.001;
 
 
 % observer matrices SISO
@@ -60,12 +60,12 @@ K = [K_s zeros(2,1); zeros(2,1) K_s];
 %% Slip Ratio Controller
 
 %Sample time
-SRC_Ts = 0.01;
+SRC_Ts = 0.001;
 
 % LQR matrices
 
 Q = [1 0 ; 0 1];
-R = [1 0; 0 1];
+R = [0.5 0; 0 0.5];
 
 mat1 = [ 1 2; 3 4];
 mat2 = [ 5 6; 7 8];
