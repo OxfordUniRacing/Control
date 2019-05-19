@@ -20,6 +20,8 @@ rho = air_density;     %density of air (kg/m^3)
 Cd = drag_coeff;       % coefficient of drag
 Area = frontal_area;       %Frontal Area(m^2)
 
+global_time_step = 0.001;
+global_bool = 1;
 %% Optimal Slip Estimator
 
 %Sample time
@@ -69,6 +71,14 @@ R = [0.5 0; 0 0.5];
 
 mat1 = [ 1 2; 3 4];
 mat2 = [ 5 6; 7 8];
+
+%% timestep
+
+if global_bool
+    SRC_Ts = global_time_step;
+    TFO_Ts = global_time_step;
+    OSE_Ts = global_time_step;
+end
 
 %% C code settings
 
