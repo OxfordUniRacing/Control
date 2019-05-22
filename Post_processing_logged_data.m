@@ -15,11 +15,38 @@ beta = squeeze(beta(1,1,:));
 gamma = squeeze(gamma(1,1,:));
 u0 = squeeze(u0(1,1,:));
 
-frame = 1;
-for i=1:10:length(alpha)
-    
 x=linspace(0,1,1000);
 u = linspace(0,3000,1000);
+
+frame = 1;
+figure
+for i = 1:10:length(alpha)
+    % non linear model
+nonlinearfx = -x.*(u0(i)-alpha(i)+beta(i)) + u0(i) - gamma(i);
+
+% linear model
+linearfx_x = -x.*(u0(i) - alpha(i) + beta(i)) + u0(i).*(1-x0(i)) - gamma(i);
+
+%current position
+currentfx = -x0(i)*(u0(i)-alpha(i)+beta(i)) + u0(i) - gamma(i);
+
+% draw 
+
+plot(x,linearfx_x)
+hold on
+plot(x,nonlinearfx)
+currentfx = -x0(i)*(u0(i)-alpha(i)+beta(i)) + u0(i) - gamma(i);
+plot(x0(i),currentfx,'o');
+axis([0 1 -100 2000])
+drawnow
+hold off
+pause(0)
+disp(i)
+end
+
+for i=1:30:length(alpha)
+    
+
 [X,U] = meshgrid(x,u);
 
 % non linear model
