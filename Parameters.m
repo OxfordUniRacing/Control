@@ -20,7 +20,7 @@ rho = air_density;     %density of air (kg/m^3)
 Cd = drag_coeff;       % coefficient of drag
 Area = frontal_area;       %Frontal Area(m^2)
 
-global_time_step = 0.001;
+global_time_step = 0.0001;
 global_bool = 1;
 %% Optimal Slip Estimator
 
@@ -66,8 +66,8 @@ SRC_Ts = 0.001;
 
 % LQR matrices
 
-Q = [10 0 ; 0 010];
-R = [1000 0; 0 1000];
+Q = [100 0 ; 0 0100];
+R = [0.1 0; 0 0.1];
 
 mat1 = [ 1 2; 3 4];
 mat2 = [ 5 6; 7 8];
