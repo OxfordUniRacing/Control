@@ -20,10 +20,12 @@ rho = air_density;     %density of air (kg/m^3)
 Cd = drag_coeff;       % coefficient of drag
 Area = frontal_area;       %Frontal Area(m^2)
 
+global_time_step = 0.0001;
+global_bool = 1;
 %% Optimal Slip Estimator
 
 %Sample time
-OSE_Ts = 0.01;
+OSE_Ts = 0.001;
 
 % estimator gains
 reduction = 0.9;
@@ -31,7 +33,7 @@ reduction = 0.9;
 %% Tire Force Observer
 
 %Sample time
-TFO_Ts = 0.01;
+TFO_Ts = 0.001;
 
 
 % observer matrices SISO
@@ -60,15 +62,23 @@ K = [K_s zeros(2,1); zeros(2,1) K_s];
 %% Slip Ratio Controller
 
 %Sample time
-SRC_Ts = 0.01;
+SRC_Ts = 0.001;
 
 % LQR matrices
 
-Q = [1 0 ; 0 1];
-R = [1 0; 0 1];
+Q = [100 0 ; 0 0100];
+R = [0.1 0; 0 0.1];
 
 mat1 = [ 1 2; 3 4];
 mat2 = [ 5 6; 7 8];
+
+%% timestep
+
+if global_bool
+    SRC_Ts = global_time_step;
+    TFO_Ts = global_time_step;
+    OSE_Ts = global_time_step;
+end
 
 %% C code settings
 
@@ -79,5 +89,5 @@ set_param('Tire_Force_Observer','TargetLangStandard','C99 (ISO)');
 set_param('Control_System','TargetLangStandard','C99 (ISO)');
 set_param('Control_System_Testbench','TargetLangStandard','C99 (ISO)');
 catch
-    warning('Models not loaded yet, compile simulink and run again');
+    warning('Models not loaded yet, compile simulink and run again to set c code generation settings');
 end
