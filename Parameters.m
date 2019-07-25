@@ -4,21 +4,24 @@ clc
 
 %% Vehicle Parameters
 
-MainFolder = cd('Testing/Car Model');
-SimpleVehicleInitialisation;
+MainFolder = cd('Testing/Car Model/NewModel');
+%SimpleVehicleInitialisation;
+fvm_parameters;
+initfunctions;
 cd(MainFolder);
 
 % Car
-Mass = car_mass + driver_mass;     %mass of car (kg)
+Mass = param.M;     %mass of car (kg)
 
 %wheels
-r = tyre_radius;            %wheel radius (m)
-Jw = tyre_inertia;         %wheel inertia (kg.m^2)
+r = param.t_rad;
+tyre_radius=r;            %wheel radius (m)
+Jw = param.I_trf;         %wheel inertia (kg.m^2)
 
 %Aerodynamics
-rho = air_density;     %density of air (kg/m^3)
-Cd = drag_coeff;       % coefficient of drag
-Area = frontal_area;       %Frontal Area(m^2)
+rho = param.rho;     %density of air (kg/m^3)
+Cd = param.c_drag;       % coefficient of drag
+Area = param.Ax;       %Frontal Area(m^2)
 
 global_time_step = 0.001;
 global_bool = 1;
